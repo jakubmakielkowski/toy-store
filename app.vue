@@ -1,7 +1,10 @@
 <template>
-  <div>
+  <div class="bg-blue-50">
     <NuxtLayout>
-      <div class="max-w-[1000px] min-h-[100vh] m-auto py-4">
+      <AppHeader />
+      <div
+        class="max-w-[1000px] min-h-[100vh] m-auto p-4 pt-20 bg-white shadow-sm"
+      >
         <NuxtPage />
       </div>
     </NuxtLayout>
