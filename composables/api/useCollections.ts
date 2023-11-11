@@ -1,5 +1,5 @@
 import { fetchShopify } from "~/services/api/fetchShopify";
-import type { ProductsResponse, QueryVariables } from "~/types/api";
+import type { CollectionsResponse, QueryVariables, ResponseData } from "~/types/api";
 
 const collectionsQuery = (variables: QueryVariables) => {
   const stringifiedVariables = JSON.stringify(variables);
@@ -15,6 +15,10 @@ const collectionsQuery = (variables: QueryVariables) => {
             nodes {
               title
               description
+              image {
+                altText
+                url
+              }
             }
           }
         }
@@ -24,8 +28,8 @@ const collectionsQuery = (variables: QueryVariables) => {
 };
 
 const useCollections = (variables: QueryVariables) => async () => {
-  const response = (await fetchShopify(collectionsQuery(variables))) as ProductsResponse;
-  return response;
+  const response = (await fetchShopify(collectionsQuery(variables))) as ResponseData<'collections', CollectionsResponse>;
+  return response.data.collections;
 };
 
 export { useCollections };

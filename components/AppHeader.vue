@@ -8,7 +8,7 @@
             <SfIconHome />
           </SfButton>
         </NuxtLink>
-        <NuxtLink to="/">
+        <NuxtLink to="/collections">
           <SfButton>All collections</SfButton>
         </NuxtLink>
         <NuxtLink to="/">

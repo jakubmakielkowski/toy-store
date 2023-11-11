@@ -30,10 +30,16 @@ type Edge = {
   cursor: string;
 };
 
-type ResponseArray<T> = {
-  pageInfo: PageInfo;
+type ResponseArray<Type> = {
+  pageInfo?: PageInfo;
   edges: Array<Edge>;
-  nodes: Array<T>;
+  nodes: Array<Type>;
 };
 
-export type { QueryVariables, MoneyV2, Image, ResponseArray };
+type ResponseData<Key extends string, Type> = {
+  data: {
+    [K in Key]: ResponseArray<Type>;
+  };
+};
+
+export type { QueryVariables, MoneyV2, Image, ResponseArray, ResponseData };
