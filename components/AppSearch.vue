@@ -19,6 +19,7 @@ const state = reactive({
 const onSearchFocus = () => {
   state.isFocused = true;
 };
+
 const onSearchBlur = () => {
   state.isFocused = false;
 };

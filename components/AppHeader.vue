@@ -11,7 +11,7 @@
         <NuxtLink to="/collections">
           <SfButton>All collections</SfButton>
         </NuxtLink>
-        <NuxtLink to="/">
+        <NuxtLink to="/blog">
           <SfButton>Blog</SfButton>
         </NuxtLink>
       </div>

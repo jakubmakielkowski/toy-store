@@ -18,11 +18,13 @@ const {
   data: productsData,
   pending: productsPending,
   error: productsError,
+  refresh: productsRefresh,
 } = await useAsyncData<ProductsResponse>("productsData", useProducts({ first: 1 }));
 
 const {
   data: collectionsData,
   pending: collectionsPending,
   error: collectionsError,
+  refresh: collectionsRefresh,
 } = await useAsyncData<CollectionsResponse>("collectionsData", useCollections({ first: 1 }));
 </script>

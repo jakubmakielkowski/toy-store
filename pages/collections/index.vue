@@ -21,6 +21,7 @@ const {
   data: collectionsData,
   pending: collectionsPending,
   error: collectionsError,
+  refresh: collectionsRefresh,
 } = await useAsyncData<CollectionsResponse>(
   "collectionsData",
   useCollections({ first: 9 })

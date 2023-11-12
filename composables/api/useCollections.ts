@@ -1,8 +1,8 @@
-import { fetchShopify } from "~/services/api/fetchShopify";
-import type { CollectionsResponse, QueryVariables, ResponseData } from "~/types/api";
+import { fetchShopify } from "~/composables/api/fetchShopify";
+import type { Collection, CollectionsResponse, QueryVariables, ResponseData } from "~/types/api";
 
 const collectionsQuery = (variables: QueryVariables) => {
-  const stringifiedVariables = JSON.stringify(variables);
+  const stringifiedVariables = JSON.stringify({ ...variables });
   return `
     {
       "variables": ${stringifiedVariables},
@@ -27,8 +27,8 @@ const collectionsQuery = (variables: QueryVariables) => {
   `;
 };
 
-const useCollections = (variables: QueryVariables) => async () => {
-  const response = (await fetchShopify(collectionsQuery(variables))) as ResponseData<'collections', CollectionsResponse>;
+const useCollections = (variables: QueryVariables) => async (): Promise<CollectionsResponse> => {
+  const response = (await fetchShopify(collectionsQuery(variables))) as ResponseData<'collections', Collection>;
   return response.data.collections;
 };
 

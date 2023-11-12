@@ -1,5 +1,5 @@
-import { fetchShopify } from "~/services/api/fetchShopify";
-import type { ProductsResponse, QueryVariables } from "~/types/api";
+import { fetchShopify } from "~/composables/api/fetchShopify";
+import type { Product, ProductsResponse, QueryVariables, ResponseData } from "~/types/api";
 
 const createProductsQuery = (variables: QueryVariables) => {
   const stringifiedVariables = JSON.stringify(variables);
@@ -44,9 +44,9 @@ const createProductsQuery = (variables: QueryVariables) => {
   `;
 };
 
-const useProducts = (variables: QueryVariables) => async () => {
-  const response = (await fetchShopify(createProductsQuery(variables))) as ProductsResponse;
-  return response;
+const useProducts = (variables: QueryVariables) => async (): Promise<ProductsResponse> => {
+  const response = (await fetchShopify(createProductsQuery(variables))) as ResponseData<'products', Product>;
+  return response.data.products;
 };
 
 export { useProducts };

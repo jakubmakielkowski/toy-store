@@ -13,7 +13,7 @@
 </template>
     
 <script lang="ts" setup>
-import type { Collection } from "~/types/api/collection";
+import type { Collection } from "~/types/api";
 
 const props = defineProps<{
   collection: Collection;
