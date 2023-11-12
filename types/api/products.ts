@@ -1,5 +1,5 @@
 import type { ResponseArray, Product } from ".";
 
-type ProductsResponse = ResponseArray<Pick<Product, "description" | "id" | "priceRange" | "tags" | "title" | "images">>;
+type ProductsResponse = ResponseArray<Pick<Product, "id" | "priceRange" | "title" | "featuredImage">>;
 
 export type { ProductsResponse };

@@ -6,7 +6,7 @@
       v-for="article in articles"
       class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md"
     >
-      <BlogTile :article="article" />
+      <ArticleCard :article="article" />
     </NuxtLink>
   </div>
 </template>

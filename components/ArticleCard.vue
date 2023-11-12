@@ -10,7 +10,7 @@
 import type { Article } from "~/types/api";
 
 const props = defineProps<{
-  article: Article;
+  article: Partial<Article>;
 }>();
 </script>
       

@@ -23,18 +23,15 @@ const createProductsQuery = (variables: QueryVariables) => {
               description
               id
               priceRange {
-                maxVariantPrice {
+                minVariantPrice {
                   amount
                   currencyCode
                 }
               }
-              tags
               title
-              images(first: 1) {
-                nodes {
-                  id
-                  src
-                }
+              featuredImage {
+                  url
+                  altText
               }
             }
           }
