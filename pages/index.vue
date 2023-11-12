@@ -3,14 +3,13 @@
   <div>
     <SfButton>{{ $t("Sample button") }}</SfButton>
     {{ productsData }}
-    {{ collectionsData }}
   </div>
 </template>
 
 <script lang="ts" setup>
 import { SfButton } from "@storefront-ui/vue";
-import { useCollections, useProducts } from "~/composables/api";
-import type { CollectionsResponse, ProductsResponse } from "~/types/api";
+import { useProducts } from "~/composables/api";
+import type { ProductsResponse } from "~/types/api";
 
 const { locale } = useI18n();
 
@@ -20,11 +19,4 @@ const {
   error: productsError,
   refresh: productsRefresh,
 } = await useAsyncData<ProductsResponse>("productsData", useProducts({ first: 1 }));
-
-const {
-  data: collectionsData,
-  pending: collectionsPending,
-  error: collectionsError,
-  refresh: collectionsRefresh,
-} = await useAsyncData<CollectionsResponse>("collectionsData", useCollections({ first: 1 }));
 </script>

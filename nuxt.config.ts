@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       SHOPIFY_API_ACCESS_TOKEN: process.env.SHOPIFY_API_ACCESS_TOKEN,
     }
   },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/i18n", '@pinia/nuxt'],
   i18n: {
     vueI18n: "./i18n.config.ts",
   },

@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="min-w-[400px]">
     <SfInput @focus="onSearchFocus" @blur="onSearchBlur">
       <template #suffix>
         <SfIconSearch />

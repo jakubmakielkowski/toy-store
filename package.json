@@ -19,5 +19,12 @@
     "vitest": "^0.33.0",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
+    "pinia": "^2.1.7"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }
