@@ -30,9 +30,9 @@
         </div>
         <div class="grid grid-cols-2 gap-4">
             <SfButton class="w-full" @click="onQueryUpdate">{{ $t("Search") }}</SfButton>
-            <SfButton :disabled="!hasFilters" variant="secondary" class="w-full" @click="onQueryClear">{{ $t("Clear all
-                            filters")
-            }}</SfButton>
+            <SfButton :disabled="!hasFilters" variant="secondary" class="w-full" @click="onQueryClear">
+                {{ $t("Clear all filters") }}
+            </SfButton>
         </div>
     </div>
 </template>
