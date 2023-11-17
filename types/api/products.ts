@@ -1,5 +1,11 @@
 import type { ResponseArray, Product } from ".";
 
-type ProductsResponse = ResponseArray<Pick<Product, "id" | "priceRange" | "title" | "featuredImage">>;
+type ProductsResponse = ResponseArray<Pick<Product, "id" | "priceRange" | "title" | "featuredImage" | "vendor">>;
 
-export type { ProductsResponse };
+type ProductsQuery = Partial<{
+    title: string;
+    vendor: string;
+    tag: string;
+}>;
+
+export type { ProductsResponse, ProductsQuery };

@@ -1,7 +1,8 @@
+import { pickBy } from "lodash-es";
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Product, ProductsResponse, QueryVariables, ResponseData } from "~/types/api";
+import type { Product, ProductsResponse, Variables, ResponseData, ProductsQuery } from "~/types/api";
 
-const createProductsQuery = (variables: QueryVariables) => {
+const createProductsGraphQLQuery = (variables: Variables<string>) => {
   const stringifiedVariables = JSON.stringify(variables);
 
   return `
@@ -33,6 +34,7 @@ const createProductsQuery = (variables: QueryVariables) => {
                   url
                   altText
               }
+              vendor
             }
           }
         }
@@ -41,8 +43,20 @@ const createProductsQuery = (variables: QueryVariables) => {
   `;
 };
 
-const useProducts = (variables: QueryVariables) => async (): Promise<ProductsResponse> => {
-  const response = (await fetchShopify(createProductsQuery(variables))) as ResponseData<'products', Product>;
+const parseVariables = (variables: Variables<ProductsQuery>) => {
+  const truthyQuery = pickBy(variables.query, Boolean);
+  const strgifiedQuery = Object.entries(truthyQuery)
+    .map(([key, value]) => (key === "title" ? `${key}:${value}*` : `${key}:${value}`))
+    .join(" ");
+  return { ...variables, query: strgifiedQuery };
+};
+
+const useProducts = (variables: Variables<ProductsQuery>) => async (): Promise<ProductsResponse> => {
+  const parsedVariables = parseVariables(variables);
+  const response = (await fetchShopify(createProductsGraphQLQuery(parsedVariables))) as ResponseData<
+    "products",
+    Product
+  >;
   return response.data.products;
 };
 

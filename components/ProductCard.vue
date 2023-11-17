@@ -10,13 +10,14 @@
     </div>
     <div class="flex justify-between">
       <p class="text-slate-700">{{ product.priceRange?.minVariantPrice.amount }} {{ product.priceRange?.minVariantPrice.currencyCode }}</p>
+      <p class="text-slate-700">{{ product.vendor }}</p>
     </div>
     <p class="text-slate-700 font-bold">{{ product.title }}</p>
   </div>
 </template>
     
 <script lang="ts" setup>
-import type { Collection, Product } from "~/types/api";
+import type { Product } from "~/types/api";
 
 const props = defineProps<{
   product: Partial<Product>;

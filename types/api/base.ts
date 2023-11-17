@@ -1,9 +1,9 @@
-type QueryVariables = Partial<{
+type Variables<T> = Partial<{
   after: string;
   before: string;
   first: number;
   last: number;
-  query: string;
+  query: T;
   reverse: boolean;
   sortKey: string;
 }>;
@@ -42,4 +42,9 @@ type ResponseData<Key extends string, Type> = {
   };
 };
 
-export type { QueryVariables, MoneyV2, Image, ResponseArray, ResponseData };
+type RadioItem = {
+  label: string;
+  value: string;
+}
+
+export type { Variables, MoneyV2, Image, ResponseArray, ResponseData, RadioItem };

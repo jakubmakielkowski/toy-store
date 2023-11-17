@@ -18,6 +18,7 @@ type Product = {
   totalInventory?: boolean;
   tags: Array<string>;
   title: string;
+  vendor: string;
   images: {
     nodes: Array<Image>;
   };
