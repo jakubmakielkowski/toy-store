@@ -23,6 +23,7 @@ const createProductsGraphQLQuery = (variables: Variables<string>) => {
             nodes {
               description
               id
+              handle
               priceRange {
                 minVariantPrice {
                   amount

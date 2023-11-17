@@ -1,6 +1,6 @@
 import type { ResponseArray, Product } from ".";
 
-type ProductsResponse = ResponseArray<Pick<Product, "id" | "priceRange" | "title" | "featuredImage" | "vendor">>;
+type ProductsResponse = ResponseArray<Pick<Product, "id" | "handle" | "priceRange" | "title" | "featuredImage" | "vendor">>;
 
 type ProductsQuery = Partial<{
     title: string;

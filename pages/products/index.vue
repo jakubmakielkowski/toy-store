@@ -2,7 +2,8 @@
   <h1 class="text-2xl text-slate-700 font-bold mt-6 mb-8">{{ $t("Products") }}</h1>
   <ProductsFilter :productsQuery="productsQuery" @productsQueryUpdated="updateProductsQuery" />
   <div class="grid gap-4 grid-cols-3">
-    <NuxtLink to="/" v-for="product in products" class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md">
+    <NuxtLink :to="`/products/${product.handle}`" v-for="product in products"
+      class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md">
       <ProductCard :product="product" />
     </NuxtLink>
   </div>
