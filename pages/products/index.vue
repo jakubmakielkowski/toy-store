@@ -10,35 +10,43 @@
 </template>
   
 <script lang="ts" setup>
+import { pickBy } from "lodash-es";
+import type { RouteLocationRaw } from "vue-router";
 import { useProducts } from "~/composables/api";
 import type { ProductsQuery, ProductsResponse } from "~/types/api";
 
 const { locale } = useI18n();
+const route = useRoute();
+const router = useRouter();
 
-const productsQuery = reactive<ProductsQuery>({
+const urlSearchQuery = ref<ProductsQuery>({
   title: "",
   vendor: "",
   tag: "",
+  ...route.query
 });
+
+const productsQuery = ref<ProductsQuery>(urlSearchQuery.value);
 
 const {
   data: productsData,
   pending: productsPending,
   error: productsError,
+  refresh: refreshProducts,
 } = await useAsyncData<ProductsResponse>(
   "productsData",
-  useProducts({ first: 12, query: productsQuery }), {
-  watch: [productsQuery]
-}
-);
+  useProducts({ first: 12, query: productsQuery.value }));
 
 const products = computed(() => productsData.value?.nodes);
 
 const updateProductsQuery = (newProductsQuery: ProductsQuery) => {
   for (const key in newProductsQuery) {
     const productsQueryKey = key as keyof ProductsQuery;
-    productsQuery[productsQueryKey] = newProductsQuery[productsQueryKey];
+    productsQuery.value[productsQueryKey] = newProductsQuery[productsQueryKey];
   }
+
+  router.push({ query: pickBy(productsQuery.value, Boolean) } as RouteLocationRaw);
+  refreshProducts();
 }
 </script>
   

@@ -4,7 +4,7 @@
         <div class="mb-4">
             <h3 class="mb-1 font-bold text-slate-700">{{ $t("Product name") }}</h3>
             <div class="col-span-2">
-                <SfInput :value="productsQuery.title" placeholder="Name"
+                <SfInput v-model="productsQuery.title" placeholder="Name"
                     @input="onQueryChange('title', $event.target.value)" />
             </div>
         </div>
@@ -28,8 +28,11 @@
                 </label>
             </div>
         </div>
-        <div>
-            <SfButton v-if="hasFilters" class="w-full" @click="onQueryClear">{{ $t("Clear all filters") }}</SfButton>
+        <div class="grid grid-cols-2 gap-4">
+            <SfButton class="w-full" @click="onQueryUpdate">{{ $t("Search") }}</SfButton>
+            <SfButton :disabled="!hasFilters" variant="secondary" class="w-full" @click="onQueryClear">{{ $t("Clear all
+                            filters")
+            }}</SfButton>
         </div>
     </div>
 </template>
@@ -47,18 +50,25 @@ const emit = defineEmits<{
     productsQueryUpdated: [productsQuery: ProductsQuery];
 }>();
 
+const newProductsQuery = ref<ProductsQuery>(props.productsQuery);
+
 const hasFilters = computed<boolean>(() => Boolean(props.productsQuery.title || props.productsQuery.tag || props.productsQuery.vendor));
 
-const onQueryChange = (key: string, value: string) => {
-    emit('productsQueryUpdated', { ...props.productsQuery, [key]: value });
+const onQueryChange = (key: keyof ProductsQuery, value: string) => {
+    newProductsQuery.value[key] = value;
 }
 
 const onQueryClear = () => {
-    emit('productsQueryUpdated', {
+    newProductsQuery.value = {
         title: "",
         vendor: "",
         tag: "",
-    });
+    }
+    emit('productsQueryUpdated', newProductsQuery.value);
+}
+
+const onQueryUpdate = () => {
+    emit('productsQueryUpdated', newProductsQuery.value);
 }
 
 </script>
