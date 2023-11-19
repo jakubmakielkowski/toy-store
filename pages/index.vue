@@ -1,13 +1,13 @@
 <template>
   <h1 class="text-2xl text-slate-700 font-bold mt-6 mb-8">Toy store</h1>
   <section class="mb-8">
-    <h2 class="mb-2 text-xl text-slate-700 font-bold">{{ $t("Sample blog post") }}</h2>
+    <h2 class="mb-4 text-xl text-slate-700 font-bold">{{ $t("Sample blog post") }}</h2>
     <NuxtLink :to="`/blog/${article.handle}`">
       <ArticleCard :article="article" />
     </NuxtLink>
   </section>
   <section class="mb-8">
-    <h2 class="mb-2 text-xl text-slate-700 font-bold">{{ $t("Sample products") }}</h2>
+    <h2 class="mb-4 text-xl text-slate-700 font-bold">{{ $t("Sample products") }}</h2>
     <ProductsSlider :products="productsData?.nodes" />
   </section>
 </template>

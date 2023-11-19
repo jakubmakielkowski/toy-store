@@ -5,13 +5,17 @@
             <SfIconClose />
         </SfButton>
         <div class="mb-8">
-            <NuxtLink class="block text-2xl font-bold underline" to="/products">{{ $t('Products') }}</NuxtLink>
-            <NuxtLink class="block text-2xl font-bold underline" to="/blog">{{ $t('Blog') }}</NuxtLink>
-            <NuxtLink class="block text-2xl font-bold underline" to="/cart">{{ $t('Cart') }}</NuxtLink>
+            <NuxtLink class="block text-2xl font-bold underline" to="/products" @click="store.closeDrawer">{{ $t('Products')
+            }}</NuxtLink>
+            <NuxtLink class="block text-2xl font-bold underline" to="/blog" @click="store.closeDrawer">{{ $t('Blog') }}
+            </NuxtLink>
         </div>
         <div class="mb-8">
-            <h2 class="text-xl font-bold mb-1">{{ $t('Collections') }}</h2>
-            <NuxtLink class="block underline mb-1" v-for="collection in collections">{{ collection.title }}</NuxtLink>
+            <h2 class="text-xl font-bold mb-1">{{ $t('Vendors') }}</h2>
+            <NuxtLink class="block underline mb-1" v-for="vendor in vendors" :to="`/products?vendor=${vendor.value}`"
+                @click="store.closeDrawer">
+                {{ vendor.label }}
+            </NuxtLink>
         </div>
     </div>
 </template>
@@ -19,18 +23,9 @@
 <script lang="ts" setup>
 import { SfButton, SfIconClose } from '@storefront-ui/vue';
 import { useStore } from '@/stores/store';
-import { useCollections } from "~/composables/api";
-import type { CollectionsResponse } from "~/types/api";
+import { vendors } from '~/utils/api/query';
 
 const store = useStore();
 
-const {
-    data: collectionsData,
-    pending: collectionsPending,
-    error: collectionsError,
-    refresh: collectionsRefresh,
-} = await useAsyncData<CollectionsResponse>("collectionsData", useCollections({ first: 10 }));
-
-const collections = computed(() => collectionsData.value?.nodes);
 </script>
     

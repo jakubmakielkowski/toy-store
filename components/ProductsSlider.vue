@@ -1,6 +1,6 @@
 <template>
     <SfScrollable
-        class="m-auto py-4 items-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        class="m-auto items-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         buttons-placement="floating" drag>
         <template #previousButton="defaultProps">
             <SfButton v-bind="defaultProps" class="absolute !rounded-full z-10 left-4 bg-white hidden md:block"

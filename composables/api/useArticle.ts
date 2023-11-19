@@ -1,5 +1,6 @@
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Article } from "~/types/api";
+import type { Article, ResponseData } from "~/types/api";
+import type { Blog } from "~/types/api/blog";
 
 const createArticleGraphQLQuery = (handle: string) => {
   return `
@@ -25,8 +26,8 @@ const createArticleGraphQLQuery = (handle: string) => {
 };
 
 const useArticle = (handle: string) => async (): Promise<Article> => {
-  const response = await fetchShopify(createArticleGraphQLQuery(handle));
-  return response.data.blogByHandle.articleByHandle;
+  const response = await fetchShopify(createArticleGraphQLQuery(handle)) as ResponseData<"blogByHandle", Blog>;
+  return response.data.blogByHandle.articleByHandle as Article;
 };
 
 export { useArticle };

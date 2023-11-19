@@ -41,6 +41,19 @@ const {
 
 const products = computed(() => productsData.value?.nodes);
 
+watch(() => route.query, (value) => {
+  urlSearchQuery.value = {
+    title: "",
+    vendor: "",
+    tag: "",
+  }
+  for (const key in value) {
+    const productsQueryKey = key as keyof ProductsQuery;
+    urlSearchQuery.value[productsQueryKey] = value[productsQueryKey] as string;
+    updateProductsQuery(urlSearchQuery.value);
+  }
+});
+
 const updateProductsQuery = (newProductsQuery: ProductsQuery) => {
   for (const key in newProductsQuery) {
     const productsQueryKey = key as keyof ProductsQuery;
