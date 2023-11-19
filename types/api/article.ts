@@ -9,6 +9,7 @@ type Article = {
   onlineStoreUrl?: string;
   title: string;
   publishedAt: string;
+  tags: string;
 };
 
 export type { Article };

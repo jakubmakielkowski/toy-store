@@ -12,7 +12,7 @@
       <p class="text-slate-700">{{ product.priceRange?.minVariantPrice.amount }} {{ product.priceRange?.minVariantPrice.currencyCode }}</p>
       <p class="text-slate-700">{{ product.vendor }}</p>
     </div>
-    <p class="text-slate-700 font-bold">{{ product.title }}</p>
+    <p class="text-slate-700 font-bold truncate">{{ product.title }}</p>
   </div>
 </template>
     

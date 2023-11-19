@@ -1,6 +1,6 @@
 import { pickBy } from "lodash-es";
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Product, ProductsResponse, Variables, ResponseData, ProductsQuery } from "~/types/api";
+import type { Product, ProductsResponse, Variables, ResponseDataArray, ProductsQuery } from "~/types/api";
 
 const createProductsGraphQLQuery = (variables: Variables<string>) => {
   const stringifiedVariables = JSON.stringify(variables);
@@ -54,7 +54,7 @@ const parseVariables = (variables: Variables<ProductsQuery>) => {
 
 const useProducts = (variables: Variables<ProductsQuery>) => async (): Promise<ProductsResponse> => {
   const parsedVariables = parseVariables(variables);
-  const response = (await fetchShopify(createProductsGraphQLQuery(parsedVariables))) as ResponseData<
+  const response = (await fetchShopify(createProductsGraphQLQuery(parsedVariables))) as ResponseDataArray<
     "products",
     Product
   >;

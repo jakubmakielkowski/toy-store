@@ -1,7 +1,7 @@
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Article, ArticlesResponse, QueryVariables, ResponseData } from "~/types/api";
+import type { Article, ArticlesResponse, Variables, ResponseDataArray } from "~/types/api";
 
-const articlesQuery = (variables: QueryVariables) => {
+const articlesQuery = (variables: Variables<null>) => {
   const stringifiedVariables = JSON.stringify(variables);
   return `
     {
@@ -13,10 +13,11 @@ const articlesQuery = (variables: QueryVariables) => {
               cursor
             }
             nodes {
+              excerpt
+              handle
               id
               title
               publishedAt
-              excerpt
               image {
                 src
               }
@@ -28,8 +29,8 @@ const articlesQuery = (variables: QueryVariables) => {
   `;
 };
 
-const useArticles = (variables: QueryVariables) => async (): Promise<ArticlesResponse> => {
-  const response = (await fetchShopify(articlesQuery(variables))) as ResponseData<'articles', Article>;
+const useArticles = (variables: Variables<null>) => async (): Promise<ArticlesResponse> => {
+  const response = (await fetchShopify(articlesQuery(variables))) as ResponseDataArray<'articles', Article>;
   return response.data.articles;
 };
 

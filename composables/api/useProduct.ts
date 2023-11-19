@@ -1,6 +1,5 @@
-import { pickBy } from "lodash-es";
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Product, Variables, ResponseData } from "~/types/api";
+import type { Product, ResponseData } from "~/types/api";
 
 const createProductGraphQLQuery = (handle: string) => {
   return `

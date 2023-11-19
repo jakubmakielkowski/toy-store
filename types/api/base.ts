@@ -36,15 +36,21 @@ type ResponseArray<Type> = {
   nodes: Array<Type>;
 };
 
-type ResponseData<Key extends string, Type> = {
+type ResponseDataArray<Key extends string, Type> = {
   data: {
     [K in Key]: ResponseArray<Type>;
+  };
+};
+
+type ResponseData<Key extends string, Type> = {
+  data: {
+    [K in Key]: Type;
   };
 };
 
 type RadioItem = {
   label: string;
   value: string;
-}
+};
 
-export type { Variables, MoneyV2, Image, ResponseArray, ResponseData, RadioItem };
+export type { Variables, MoneyV2, Image, ResponseArray, ResponseData, ResponseDataArray, RadioItem };
