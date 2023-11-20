@@ -1,6 +1,6 @@
 
 <template>
-  <div class="h-full p-4 rounded-md border border-slate-300">
+  <div class="h-full p-4 rounded-md border bg-white border-slate-300">
     <div class="mb-4">
       <img
         :src="product.featuredImage?.url"

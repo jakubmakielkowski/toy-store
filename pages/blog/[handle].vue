@@ -1,6 +1,6 @@
 <template>
     <NuxtLink to="/blog">
-        <SfButton class="mt-4 mb-6">
+        <SfButton class="mt-4 mb-6 dark:bg-neutral-900">
             <SfIconChevronLeft />{{ $t("Blog") }}
         </SfButton>
     </NuxtLink>

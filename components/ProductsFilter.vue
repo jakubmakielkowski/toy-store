@@ -29,8 +29,8 @@
             </div>
         </div>
         <div class="grid grid-cols-2 gap-4">
-            <SfButton class="w-full" @click="onQueryUpdate">{{ $t("Search") }}</SfButton>
-            <SfButton :disabled="!hasFilters" variant="secondary" class="w-full" @click="onQueryClear">
+            <SfButton class="w-full dark:bg-neutral-900" @click="onQueryUpdate">{{ $t("Search") }}</SfButton>
+            <SfButton :disabled="!hasFilters" variant="secondary" class="w-full dark:bg-neutral-900" @click="onQueryClear">
                 {{ $t("Clear all filters") }}
             </SfButton>
         </div>

@@ -7,7 +7,7 @@
             <div class="font-xl font-bold text-slate-700">{{ $t('Something went wrong!') }}</div>
             <SfIconCancel size="xl" class="mb-8" />
             <NuxtLink to="/">
-                <SfButton>{{ $t('Back to home page') }}</SfButton>
+                <SfButton class="dark:bg-neutral-900">{{ $t('Back to home page') }}</SfButton>
             </NuxtLink>
         </div>
         <div v-else-if="noData" class="font-xl font-bold text-slate-700 text-center">

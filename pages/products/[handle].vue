@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink to="/products"><SfButton class="my-4"><SfIconChevronLeft />{{ $t("Products") }}</SfButton></NuxtLink>
+    <NuxtLink to="/products"><SfButton class="my-4 dark:bg-neutral-900"><SfIconChevronLeft />{{ $t("Products") }}</SfButton></NuxtLink>
     <h1 class="text-2xl text-slate-700 font-bold mb-8">{{ product?.title }}</h1>
     <div class="grid grid-cols-2">
         <div>
@@ -20,7 +20,7 @@
                     {{ tag }}
                 </SfChip>
             </section>
-            <SfButton class="w-full">{{ $t("Add to cart") }}</SfButton>
+            <SfButton class="w-full dark:bg-neutral-900">{{ $t("Add to cart") }}</SfButton>
         </div>
         <ProductGallery :images="product?.images.nodes" />
     </div>
