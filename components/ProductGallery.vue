@@ -47,9 +47,10 @@ import {
 } from '@storefront-ui/vue';
 import { unrefElement, useIntersectionObserver } from '@vueuse/core';
 import { watch, type ComponentPublicInstance } from 'vue';
+import type { Image } from '~/types/api';
 
 const props = defineProps<{
-    images: any;
+    images: Array<Image>;
 }>();
 
 const thumbsRef = ref<HTMLElement>();

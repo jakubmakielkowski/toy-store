@@ -1,5 +1,9 @@
 <template>
-    <NuxtLink to="/products"><SfButton class="my-4 dark:bg-neutral-900"><SfIconChevronLeft />{{ $t("Products") }}</SfButton></NuxtLink>
+    <NuxtLink to="/products">
+        <SfButton class="my-4 dark:bg-neutral-900">
+            <SfIconChevronLeft />{{ $t("Products") }}
+        </SfButton>
+    </NuxtLink>
     <h1 class="text-2xl text-slate-700 font-bold mb-8">{{ product?.title }}</h1>
     <div class="grid grid-cols-2">
         <div>
@@ -20,23 +24,27 @@
                     {{ tag }}
                 </SfChip>
             </section>
-            <SfButton class="w-full dark:bg-neutral-900">{{ $t("Add to cart") }}</SfButton>
+            <SfButton class="w-full dark:bg-neutral-900" @click="addToCart">{{ $t("Add to cart") }}</SfButton>
         </div>
         <ProductGallery :images="product?.images.nodes" />
     </div>
 </template>
     
 <script lang="ts" setup>
-import { useProduct } from "~/composables/api";
-import type { Product } from "~/types/api";
 import {
     SfButton,
     SfChip,
     SfIconChevronLeft,
 } from '@storefront-ui/vue';
+import { useProduct } from "~/composables/api";
+import { useAddToCart, useCreateCart } from "~/composables/api/useCart";
+import { useStore } from "~/stores/store";
+import type { Product } from "~/types/api";
+
 const route = useRoute();
 
 const handle = route.params.handle as string;
+const store = useStore();
 
 const {
     data: product,
@@ -46,6 +54,23 @@ const {
     "productData",
     useProduct(handle)
 );
+
+const addToCart = async (): Promise<void> => {
+    if (!store.cart) {
+        const newCart = await useCreateCart();
+        store.setCart(newCart);
+    }
+
+    const cart = store.cart;
+    const newCart = await useAddToCart(cart.id, {
+        merchandise: {
+            productVariant: product.value.variants.nodes[0],
+        },
+        quantity: 1
+    });
+    store.setCart(newCart);
+}
+
 
 </script>
     

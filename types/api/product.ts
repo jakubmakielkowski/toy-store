@@ -22,6 +22,9 @@ type Product = {
   images: {
     nodes: Array<Image>;
   };
+  variants: {
+    nodes: { id: string };
+  };
 };
 
 export type { Product };

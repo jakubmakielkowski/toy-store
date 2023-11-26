@@ -35,6 +35,11 @@ const createProductGraphQLQuery = (handle: string) => {
             src
           }
         }
+        variants(first: 1) {
+          nodes {
+              id
+          }
+        }
       }
     }"
   } 

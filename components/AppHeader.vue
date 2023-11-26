@@ -1,6 +1,6 @@
 
 <template>
-  <div class="fixed bg-white shadow-sm top-0 right-0 left-0">
+  <div class="fixed z-20 bg-white shadow-sm top-0 right-0 left-0">
     <div class="absolute top-4 left-4">
       <SfButton :square="true" class="dark:bg-neutral-900" @click="store.openDrawer">
         <SfIconMenu />
@@ -16,9 +16,13 @@
         <AppSearch />
       </div>
       <div class="flex justify-end gap-4">
-        <SfButton :square="true" class="dark:bg-neutral-900">
-          <SfIconShoppingCart />
-        </SfButton>
+        <div class="relative">
+          <SfButton :square="true" class="dark:bg-neutral-900" @click="store.toggleCart">
+            <SfIconShoppingCart />
+            <SfBadge :content="cart?.totalQuantity || 0" />
+          </SfButton>
+          <CartPopover v-show="store.isCartOpened" :cart="cart" />
+        </div>
         <SfButton :square="true" class="dark:bg-neutral-900">
           <SfIconFavoriteFilled />
         </SfButton>
@@ -28,9 +32,12 @@
 </template>
   
 <script lang="ts" setup>
-import { SfButton, SfIconMenu, SfIconShoppingCart, SfIconFavoriteFilled, SfIconHome } from "@storefront-ui/vue";
+import { SfButton, SfIconMenu, SfIconShoppingCart, SfIconFavoriteFilled, SfIconHome, SfBadge } from "@storefront-ui/vue";
 import { useStore } from '@/stores/store';
 
 const store = useStore();
+
+const cart = computed(() => store.cart);
+
 </script>
   

@@ -15,5 +15,4 @@
 import { useStore } from '@/stores/store';
 
 const store = useStore();
-console.log(store.isDarkMode);
 </script>

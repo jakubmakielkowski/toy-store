@@ -1,6 +1,6 @@
 
 <template>
-    <div v-show="store.isDrawerOpened" class="fixed top-0 bottom-0 left-0 z-10 p-4 bg-white shadow-md min-w-[320px]">
+    <div v-show="store.isDrawerOpened" class="fixed z-30 top-0 bottom-0 left-0 p-4 bg-white shadow-md min-w-[320px]">
         <SfButton :square="true" class="mb-4 dark:bg-neutral-900" @click="store.closeDrawer">
             <SfIconClose />
         </SfButton>
@@ -19,7 +19,8 @@
         </div>
         <div class="mb-8">
             <h2 class="text-xl font-bold mb-1">{{ $t('Dark mode') }}</h2>
-            <SfSwitch :modelValue="store.isDrawerOpened" class="dark:bg-neutral-900 dark:border-neutral-900" @click="store.toggleDarkMode"/>
+            <SfSwitch :modelValue="store.isDrawerOpened" class="dark:bg-neutral-900 dark:border-neutral-900"
+                @click="store.toggleDarkMode" />
         </div>
     </div>
 </template>
