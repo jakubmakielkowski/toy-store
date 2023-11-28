@@ -1,17 +1,17 @@
 <template>
     <NuxtLink to="/blog">
-        <SfButton class="mt-4 mb-6 dark:bg-neutral-900">
+        <SfButton class="mt-4 mb-6 dark:bg-neutral-900" tabindex="-1">
             <SfIconChevronLeft />{{ $t("Blog") }}
         </SfButton>
     </NuxtLink>
-    <h1 class="text-2xl text-slate-700 font-bold">{{ article?.title }}</h1>
+    <h1 class="text-2xl font-bold">{{ article?.title }}</h1>
     <div class="flex gap-1 my-4">
-        <SfChip v-if="article?.tags" v-for="tag in article?.tags" size="sm" class="mr-2 mb-2 text-slate-700">
+        <SfChip v-if="article?.tags" v-for="tag in article?.tags" size="sm" class="mr-2 mb-2 ">
             {{ tag }}
         </SfChip>
     </div>
     <div>
-        <p class="text-slate-700">{{ article?.content }}</p>
+        <p class="">{{ article?.content }}</p>
     </div>
 </template>
     

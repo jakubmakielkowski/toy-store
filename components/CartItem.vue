@@ -2,7 +2,7 @@
 <template>
     <div class="h-full py-2 px-4 rounded-md border bg-white border-slate-300">
         <div class="mb-2 flex justify-between items-center gap-1">
-            <p class="text-slate-700">
+            <p class="">
                 {{ props.item.quantity }} × <span class="font-bold">{{ props.item?.merchandise?.price?.amount }} {{
                     props.item?.merchandise?.price?.currencyCode }}</span>
             </p>

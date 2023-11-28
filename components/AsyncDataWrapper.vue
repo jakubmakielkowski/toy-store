@@ -4,14 +4,14 @@
             <SfLoaderCircular size="2xl" />
         </div>
         <div v-else-if="error" class="flex flex-col items-center gap-2">
-            <div class="font-xl font-bold text-slate-700">{{ $t('Something went wrong!') }}</div>
+            <div class="font-xl font-bold ">{{ $t('Something went wrong') }}</div>
             <SfIconCancel size="xl" class="mb-8" />
             <NuxtLink to="/">
-                <SfButton class="dark:bg-neutral-900">{{ $t('Back to home page') }}</SfButton>
+                <SfButton class="dark:bg-neutral-900" tabindex="-1">{{ $t('Back to home page') }}</SfButton>
             </NuxtLink>
         </div>
-        <div v-else-if="noData" class="font-xl font-bold text-slate-700 text-center">
-            {{ $t('No results for this query.') }}
+        <div v-else-if="noData" class="font-xl font-bold text-center">
+            {{ $t('No results for this query') }}
         </div>
         <slot v-else />
     </div>

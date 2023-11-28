@@ -1,6 +1,6 @@
 <template>
-  <div :class="store.isDarkMode && 'dark'">
-    <div class="bg-blue-50 dark:bg-slate-900">
+  <main :class="store.isDarkMode && 'dark'">
+    <div class="bg-blue-50 dark:bg-slate-900 text-slate-700">
       <NuxtLayout>
         <AppDrawer />
         <AppHeader />
@@ -9,7 +9,7 @@
         </div>
       </NuxtLayout>
     </div>
-  </div>
+  </main>
 </template>
 <script lang="ts" setup>
 import { useStore } from '@/stores/store';

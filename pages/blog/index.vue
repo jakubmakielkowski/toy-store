@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-2xl text-slate-700 font-bold mt-6 mb-8">{{ $t("Blog") }}</h1>
+  <h1 class="text-2xl font-bold mt-6 mb-8">{{ $t("Blog") }}</h1>
   <div class="grid gap-4 grid-cols-1">
     <NuxtLink :to="`/blog/${article.handle}`" v-for="article in articles"
       class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md">
