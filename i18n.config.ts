@@ -30,6 +30,7 @@ export default defineI18nConfig(() => ({
       "Back to home page": "Back to home page",
       "No results for this query": "No results for this query",
       "Name": "Name",
+      "Recommended products": "Recommended products",
     },
     pl: {
       "product in the cart": "produkt w koszyku",
@@ -59,6 +60,7 @@ export default defineI18nConfig(() => ({
       "Back to home page": "Powrót na stronę główną",
       "No results for this query": "Brak wyników dla tego zapytania",
       "Name": "Nazwa",
+      "Recommended products": "Polecane produkty",
     },
   },
 }));

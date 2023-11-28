@@ -3,7 +3,7 @@
         <SfScrollable ref="thumbsRef"
             class="items-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
             direction="vertical" :active-index="activeIndex" :previous-disabled="activeIndex === 0"
-            :next-disabled="activeIndex === images.length - 1" buttons-placement="floating">
+            :next-disabled="activeIndex === images?.length - 1" buttons-placement="floating">
             <template #previousButton="defaultProps">
                 <SfButton v-if="!firstThumbVisible" v-bind="defaultProps" :disabled="activeIndex === 0"
                     class="absolute !rounded-full z-10 top-4 rotate-90 bg-white" variant="secondary" size="sm" square>
@@ -17,7 +17,7 @@
                 <img :alt="altText" class="border border-neutral-200" width="78" height="78" :src="src" />
             </button>
             <template #nextButton="defaultProps">
-                <SfButton v-if="!lastThumbVisible" v-bind="defaultProps" :disabled="activeIndex === images.length"
+                <SfButton v-if="!lastThumbVisible" v-bind="defaultProps" :disabled="activeIndex === images?.length"
                     class="absolute !rounded-full z-10 bottom-4 rotate-90 bg-white" variant="secondary" size="sm" square>
                     <SfIconChevronRight size="sm" />
                 </SfButton>
@@ -103,14 +103,14 @@ watch(
 const onDragged = (event: SfScrollableOnDragEndData) => {
     if (event.swipeRight && activeIndex.value > 0) {
         activeIndex.value -= 1;
-    } else if (event.swipeLeft && activeIndex.value < props.images.length - 1) {
+    } else if (event.swipeLeft && activeIndex.value < props.images?.length - 1) {
         activeIndex.value += 1;
     }
 };
 
 const assignRef = (el: Element | ComponentPublicInstance | null, index: number) => {
     if (!el) return;
-    if (index === props.images.length - 1) {
+    if (index === props.images?.length - 1) {
         lastThumbRef.value = el as HTMLButtonElement;
     } else if (index === 0) {
         firstThumbRef.value = el as HTMLButtonElement;

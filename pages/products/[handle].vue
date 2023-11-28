@@ -5,7 +5,7 @@
         </SfButton>
     </NuxtLink>
     <h1 class="text-2xl font-bold mb-8">{{ product?.title }}</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
         <ProductGallery :images="product?.images.nodes" />
         <div>
             <p class="mb-1 text-sm text-slate-500">{{ $t("Created at") }}: {{ product?.createdAt }}</p>
@@ -28,6 +28,10 @@
             <SfButton class="w-full dark:bg-neutral-900" @click="addToCart">{{ $t("Add to cart") }}</SfButton>
         </div>
     </div>
+    <section>
+        <h2 class="mb-4 font-bold text-xl">{{ $t("Recommended products") }}</h2>
+        <ProductsSlider :products="productRecommendations" />
+    </section>
 </template>
     
 <script lang="ts" setup>
@@ -36,10 +40,10 @@ import {
     SfChip,
     SfIconChevronLeft,
 } from '@storefront-ui/vue';
-import { useProduct } from "~/composables/api";
+import { useProduct, useProductRecommendations } from "~/composables/api";
 import { useAddToCart, useCreateCart } from "~/composables/api/useCart";
 import { useStore } from "~/stores/store";
-import type { Product } from "~/types/api";
+import type { Product, Image } from "~/types/api";
 
 const route = useRoute();
 
@@ -53,6 +57,16 @@ const {
 } = await useAsyncData<Product>(
     "productData",
     useProduct(handle)
+);
+
+
+const id = computed(() => product.value.id);
+
+const {
+    data: productRecommendations,
+} = await useAsyncData<Array<Partial<Product>>>(
+    "productRecommendations",
+    useProductRecommendations(id.value)
 );
 
 const addToCart = async (): Promise<void> => {
