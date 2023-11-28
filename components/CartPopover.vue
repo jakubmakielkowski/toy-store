@@ -1,6 +1,9 @@
 <template>
     <div class="absolute top-12 right-0 w-[300px] bg-white rounded shadow-md p-4">
-        <div class="mb-2 text-slate-700">{{ totalQuantity }} {{ $t("product in the cart") }}</div>
+        <div class="mb-2 flex justify-between text-slate-700">
+            <div>{{ totalQuantity }} {{ $t("product in the cart") }}</div>
+            <div class="font-bold">{{ props.cart?.cost.totalAmount.amount }} {{ props.cart?.cost.totalAmount.currencyCode }}</div>
+        </div>
         <div class="mb-4">
             <NuxtLink to="/cart">
                 <SfButton class="w-full">{{ $t("See the cart") }}</SfButton>
