@@ -1,36 +1,35 @@
+import gql from "graphql-tag";
+import { print } from "graphql/language/printer";
 import { fetchShopify } from "~/composables/api/fetchShopify";
 import type { Article, ArticlesResponse, Variables, ResponseDataArray } from "~/types/api";
 
-const articlesQuery = (variables: Variables<null>) => {
-  const stringifiedVariables = JSON.stringify(variables);
-  return `
-    {
-      "variables": ${stringifiedVariables},
-      "query": "
-        query GetArticle($first: Int!) {
-          articles(first: $first) { 
-            edges {
-              cursor
-            }
-            nodes {
-              excerpt
-              handle
-              id
-              title
-              publishedAt
-              image {
-                src
-              }
-            }
-          }
+const articlesQuery = print(gql`
+  query ($first: Int!) {
+    articles(first: $first) {
+      edges {
+        cursor
+      }
+      nodes {
+        excerpt
+        handle
+        id
+        title
+        publishedAt
+        image {
+          src
         }
-      "
+      }
     }
-  `;
-};
+  }
+`);
 
 const useArticles = (variables: Variables<null>) => async (): Promise<ArticlesResponse> => {
-  const response = (await fetchShopify(articlesQuery(variables))) as ResponseDataArray<'articles', Article>;
+  const body = {
+    variables: variables,
+    query: articlesQuery,
+  }
+
+  const response = (await fetchShopify(body)) as ResponseDataArray<"articles", Article>;
   return response.data.articles;
 };
 

@@ -1,4 +1,4 @@
-const fetchShopify = async (stringifiedBody: string) => {
+const fetchShopify = async (body: unknown) => {
   const config = useRuntimeConfig() as any;
   const response = await $fetch(config.public.SHOPIFY_API_ENDPOINT, {
     method: "POST",
@@ -6,7 +6,7 @@ const fetchShopify = async (stringifiedBody: string) => {
       "Content-Type": "application/json",
       "X-Shopify-Storefront-Access-Token": config.public.SHOPIFY_API_ACCESS_TOKEN,
     }),
-    body: stringifiedBody,
+    body: JSON.stringify(body),
     redirect: "follow",
   });
   return response;
