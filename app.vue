@@ -4,9 +4,10 @@
       <NuxtLayout>
         <AppDrawer />
         <AppHeader />
-        <div class="max-w-[1000px] min-h-[100vh] m-auto p-4 pt-20 bg-white shadow-sm">
+        <div class="max-w-[1000px] min-h-[100vh] mx-auto pt-20 px-4 pb-10 bg-white shadow-sm">
           <NuxtPage />
         </div>
+        <AppFooter />
       </NuxtLayout>
     </div>
   </main>
