@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { useAddToCart, useCreateCart, useRemoveFromCart } from "~/composables/api/useCart";
 import type { BaseCartLine, Cart } from "~/types/api";
+import type { Color } from "~/types/ui";
 
 export const useStore = defineStore("store", () => {
   const isDrawerOpened = ref<boolean>(false);
@@ -27,11 +28,13 @@ export const useStore = defineStore("store", () => {
     }
     const newCart = await useAddToCart(cart.value.id, cartLine);
     cart.value = newCart;
+    showNotification('Item has been added to the cart.', 'positive');
   };
 
   const removeFromCart = async (lineId: string) => {
     const newCart = await useRemoveFromCart(cart.value.id, lineId);
     cart.value = newCart;
+    showNotification('Item has been removed from the cart.', 'negative');
   };
 
   const isCartOpened = ref<boolean>(false);
@@ -42,6 +45,28 @@ export const useStore = defineStore("store", () => {
 
   const toggleCart = () => {
     isCartOpened.value = !isCartOpened.value;
+  };
+
+  const notification = ref({
+    isVisible: false,
+    text: "",
+    color: "positive",
+  });
+
+  const showNotification = (text: string, color: Color) => {
+    notification.value = {
+      text,
+      color,
+      isVisible: true,
+    };
+  };
+
+  const hideNotification = () => {
+    notification.value = {
+      text: "",
+      color: "positive",
+      isVisible: false,
+    };
   };
 
   return {
@@ -56,5 +81,8 @@ export const useStore = defineStore("store", () => {
     isCartOpened,
     closeCart,
     toggleCart,
+    notification,
+    showNotification,
+    hideNotification,
   };
 });
