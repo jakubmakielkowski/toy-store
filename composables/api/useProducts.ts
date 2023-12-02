@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { print } from "graphql/language/printer";
 import { pickBy } from "lodash-es";
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Product, ProductsResponse, Variables, ResponseDataArray, ProductsQuery } from "~/types/api";
+import type { Product, ProductsResponse, Variables, ProductsQuery, ConnectionArray, ResponseData } from "~/types/api";
 
 const productsQuery = print(gql`
   query (
@@ -69,7 +69,7 @@ const useProducts = (variables: Variables<ProductsQuery>) => async (): Promise<P
     query: productsQuery,
   };
 
-  const response = (await fetchShopify(body)) as ResponseDataArray<"products", Product>;
+  const response = (await fetchShopify(body)) as ResponseData<"products", ConnectionArray<Product>>;
   return response.data.products;
 };
 

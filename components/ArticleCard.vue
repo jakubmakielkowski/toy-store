@@ -1,8 +1,8 @@
 
 <template>
   <div class="p-4 rounded-md border border-slate-300">
-    <p class="font-bold">{{ article.title }}</p>
-    <p class="">{{ article.excerpt }}</p>
+    <p class="font-bold">{{ props.article?.title }}</p>
+    <p class="">{{ props.article?.excerpt }}</p>
   </div>
 </template>
       

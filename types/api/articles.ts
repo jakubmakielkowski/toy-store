@@ -1,5 +1,5 @@
-import type { Article, ResponseArray } from ".";
+import type { Article, ConnectionArray } from ".";
 
-type ArticlesResponse = ResponseArray<Pick<Article, "excerpt" | "handle" | "title">>;
+type ArticlesResponse = ConnectionArray<Pick<Article, "excerpt" | "handle" | "title">>;
 
 export type { ArticlesResponse };

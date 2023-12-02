@@ -4,15 +4,17 @@
             <SfIconChevronLeft />{{ $t("Blog") }}
         </SfButton>
     </NuxtLink>
-    <h1 class="text-2xl font-bold">{{ article?.title }}</h1>
-    <div class="flex gap-1 my-4">
-        <SfChip v-if="article?.tags" v-for="tag in article?.tags" size="sm" class="mr-2 mb-2 ">
-            {{ tag }}
-        </SfChip>
-    </div>
-    <div>
-        <p class="">{{ article?.content }}</p>
-    </div>
+    <AsyncDataWrapper :noData="!article" :error="articleError">
+        <h1 class="text-2xl font-bold">{{ article?.title }}</h1>
+        <div class="flex gap-1 my-4">
+            <SfChip v-if="article?.tags" v-for="tag in article?.tags" size="sm" class="mr-2 mb-2 ">
+                {{ tag }}
+            </SfChip>
+        </div>
+        <div>
+            <p class="">{{ article?.content }}</p>
+        </div>
+    </AsyncDataWrapper>
 </template>
     
 <script lang="ts" setup>
@@ -29,7 +31,6 @@ const handle = route.params.handle as string;
 
 const {
     data: article,
-    pending: articlePending,
     error: articleError,
 } = await useAsyncData<Article>(
     "articleData",

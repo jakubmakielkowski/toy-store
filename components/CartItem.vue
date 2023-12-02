@@ -31,10 +31,8 @@ const props = defineProps<{
     item: Partial<BaseCartLine>;
 }>();
 
-const removeFromCart = async (): Promise<void> => {
-    const cart = store.cart;
-    const newCart = await useRemoveFromCart(cart.id, props.item.id);
-    store.setCart(newCart);
+const removeFromCart = (): void => {
+    store.removeFromCart(props.item.id);
 }
 </script>
       

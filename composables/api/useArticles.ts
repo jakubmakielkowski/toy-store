@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 import { print } from "graphql/language/printer";
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Article, ArticlesResponse, Variables, ResponseDataArray } from "~/types/api";
+import type { Article, ArticlesResponse, ConnectionArray, ResponseData, Variables } from "~/types/api";
 
 const articlesQuery = print(gql`
   query ($first: Int!) {
@@ -27,9 +27,9 @@ const useArticles = (variables: Variables<null>) => async (): Promise<ArticlesRe
   const body = {
     variables: variables,
     query: articlesQuery,
-  }
+  };
 
-  const response = (await fetchShopify(body)) as ResponseDataArray<"articles", Article>;
+  const response = (await fetchShopify(body)) as ResponseData<"articles", ConnectionArray<Article>>;
   return response.data.articles;
 };
 

@@ -25,7 +25,7 @@
 </template>
   
 <script lang="ts" setup>
-import { SfButton, SfIconMenu, SfIconShoppingCart, SfIconSearch, SfIconHome, SfBadge } from "@storefront-ui/vue";
+import { SfButton, SfIconMenu, SfIconShoppingCart, SfIconSearch, SfBadge } from "@storefront-ui/vue";
 import { useStore } from '@/stores/store';
 
 const store = useStore();

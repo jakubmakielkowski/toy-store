@@ -31,7 +31,7 @@ import {
 import type { Product } from '~/types/api';
 
 const props = defineProps<{
-    products?: Array<Partial<Product>>;
+    products: Array<Partial<Product>>;
 }>();
 </script>
   

@@ -8,6 +8,7 @@
           <NuxtPage />
         </div>
         <AppFooter />
+        <AppAlert />
       </NuxtLayout>
     </div>
   </main>

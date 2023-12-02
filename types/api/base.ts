@@ -30,16 +30,10 @@ type Edge = {
   cursor: string;
 };
 
-type ResponseArray<Type> = {
+type ConnectionArray<Type> = {
   pageInfo?: PageInfo;
   edges: Array<Edge>;
   nodes: Array<Type>;
-};
-
-type ResponseDataArray<Key extends string, Type> = {
-  data: {
-    [K in Key]: ResponseArray<Type>;
-  };
 };
 
 type ResponseData<Key extends string, Type> = {
@@ -53,4 +47,4 @@ type RadioItem = {
   value: string;
 };
 
-export type { Variables, MoneyV2, Image, ResponseArray, ResponseData, ResponseDataArray, RadioItem };
+export type { Variables, MoneyV2, Image, ConnectionArray, ResponseData, RadioItem };

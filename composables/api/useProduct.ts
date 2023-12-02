@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 import { print } from "graphql/language/printer";
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { Product, ResponseData, ResponseDataArray } from "~/types/api";
+import type { Product, ResponseData } from "~/types/api";
 
 const productQuery = print(gql`
   query ($handle: String!) {
@@ -87,7 +87,7 @@ const useProductRecommendations = (productId: string) => async (): Promise<Array
     query: productRecommendationsQuery,
   };
 
-  const response = await fetchShopify(body);
+  const response = (await fetchShopify(body)) as ResponseData<"productRecommendations", Array<Partial<Product>>>;
   return response.data.productRecommendations;
 };
 

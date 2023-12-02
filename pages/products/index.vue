@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-2xl font-bold mt-6 mb-8">{{ $t("Products") }}</h1>
   <ProductsFilter :productsQuery="productsQuery" @productsQueryUpdated="updateProductsQuery" />
-  <AsyncDataWrapper :pending="productsPending" :error="Boolean(productsError)" :noData="!products?.length">
+  <AsyncDataWrapper :pending="productsPending" :error="productsError" :noData="!products.length">
     <div class="grid gap-4 grid-cols-2 md:grid-cols-3">
       <NuxtLink :to="`/products/${product.handle}`" v-for="product in products"
         class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md">
@@ -39,7 +39,7 @@ const {
   "productsData",
   useProducts({ first: 12, query: productsQuery.value }));
 
-const products = computed(() => productsData.value?.nodes);
+const products = computed(() => productsData.value?.nodes || []);
 
 watch(() => route.query, (value) => {
   urlSearchQuery.value = {

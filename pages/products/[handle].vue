@@ -41,7 +41,6 @@ import {
     SfIconChevronLeft,
 } from '@storefront-ui/vue';
 import { useProduct, useProductRecommendations } from "~/composables/api";
-import { useAddToCart, useCreateCart } from "~/composables/api/useCart";
 import { useStore } from "~/stores/store";
 import type { Product, Image } from "~/types/api";
 
@@ -69,20 +68,13 @@ const {
     useProductRecommendations(id.value)
 );
 
-const addToCart = async (): Promise<void> => {
-    if (!store.cart) {
-        const newCart = await useCreateCart();
-        store.setCart(newCart);
-    }
-
-    const cart = store.cart;
-    const newCart = await useAddToCart(cart.id, {
+const addToCart = (): void => {
+    store.addToCart({
         merchandise: {
             productVariant: product.value.variants.nodes[0],
         },
         quantity: 1
     });
-    store.setCart(newCart);
 }
 
 

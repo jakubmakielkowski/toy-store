@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 import { print } from "graphql/language/printer";
 import { fetchShopify } from "~/composables/api/fetchShopify";
-import type { BaseCartLine, Cart } from "~/types/api";
+import type { BaseCartLine, Cart, ResponseData } from "~/types/api";
 
 const createCartMutation = print(gql`
   mutation {
@@ -57,7 +57,7 @@ const useCreateCart = async (): Promise<Cart> => {
   const body = {
     query: createCartMutation,
   };
-  const response = await fetchShopify(body);
+  const response = (await fetchShopify(body)) as ResponseData<"cartCreate", { cart: Cart }>;
   return response.data.cartCreate.cart;
 };
 
@@ -120,7 +120,7 @@ const useAddToCart = async (cartId: string, cartLine: BaseCartLine): Promise<Car
     },
     query: addToCartMutation,
   };
-  const response = await fetchShopify(body);
+  const response = (await fetchShopify(body)) as ResponseData<"cartLinesAdd", { cart: Cart }>;
   return response.data.cartLinesAdd.cart;
 };
 
@@ -182,7 +182,7 @@ const useRemoveFromCart = async (cartId: string, lineId: string): Promise<Cart> 
     },
     query: removeFromCartMutation,
   };
-  const response = await fetchShopify(body);
+  const response = (await fetchShopify(body)) as ResponseData<"cartLinesRemove", { cart: Cart }>;
   return response.data.cartLinesRemove.cart;
 };
 
