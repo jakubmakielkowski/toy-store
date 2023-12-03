@@ -37,6 +37,11 @@ export default defineI18nConfig(() => ({
       "404 page": "404 page",
       "About": "About",
       "Github link": "Github link",
+      "Home page": "Home page",
+      "Item has been added to the cart.": "Item has been added to the cart.",
+      "Item has been removed from the cart.": "Item has been removed from the cart.",
+      "Error while adding item to the cart.": "Error while adding item to the cart.",
+      "Error while removing item from the cart.": "Error while removing item from the cart.",
     },
     pl: {
       "product in the cart": "produkt w koszyku",
@@ -73,6 +78,11 @@ export default defineI18nConfig(() => ({
       "404 page": "strona 404",
       "About": "O nas",
       "Github link": "Link do Githuba",
+      "Home page": "Strona główna",
+      "Item has been added to the cart.": "Przedmiot został dodany do koszyka.",
+      "Item has been removed from the cart.": "Przedmiot został usnuięty z koszyka.",
+      "Error while adding item to the cart.": "Błąd podczas dodawania do koszyka.",
+      "Error while removing item from the cart.": "Błąd podczas usuwania z koszyka.",
     },
   },
 }));

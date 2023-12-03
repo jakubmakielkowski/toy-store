@@ -6,7 +6,11 @@
                 {{ props.item.quantity }} × <span class="font-bold">{{ props.item?.merchandise?.price?.amount }} {{
                     props.item?.merchandise?.price?.currencyCode }}</span>
             </p>
-            <SfButton variant="tertiary" size="sm" :square="true" @click="removeFromCart"><SfIconClose /></SfButton>
+
+            <SfButton :disabled="store.isCartLoading" variant="tertiary" size="sm" :square="true" @click="removeFromCart">
+                <SfLoaderCircular v-if="store.isCartLoading" />
+                <SfIconClose v-else />
+            </SfButton>
         </div>
         <div class="flex justify-between items-center gap-1">
             <p class="text-xs">
@@ -20,8 +24,7 @@
 </template>
       
 <script lang="ts" setup>
-import { SfButton, SfIconClose } from '@storefront-ui/vue';
-import { useRemoveFromCart } from '~/composables/api/useCart';
+import { SfButton, SfIconClose, SfLoaderCircular } from '@storefront-ui/vue';
 import type { BaseCartLine } from '~/types/api';
 import { useStore } from "~/stores/store";
 

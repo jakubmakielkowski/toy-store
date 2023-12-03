@@ -3,7 +3,7 @@
     <div class="mb-6 flex flex-col sm:flex-row text-slate-400">
         <div v-for="(breadcrumb, index) in breadcrumbs">
             <NuxtLink v-if="path !== '/'" :to="breadcrumb.path" class="hover:underline">
-                {{ breadcrumb.name }}
+                {{ $t(breadcrumb.name) }}
             </NuxtLink>
             <span v-if="index < breadcrumbs.length - 1" class="mx-2">/</span>
         </div>

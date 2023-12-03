@@ -20,23 +20,6 @@ export const useStore = defineStore("store", () => {
     isDarkMode.value = !isDarkMode.value;
   };
 
-  const cart = ref<Cart>(null);
-
-  const addToCart = async (cartLine: BaseCartLine) => {
-    if (!cart.value) {
-      cart.value = await useCreateCart();
-    }
-    const newCart = await useAddToCart(cart.value.id, cartLine);
-    cart.value = newCart;
-    showNotification('Item has been added to the cart.', 'positive');
-  };
-
-  const removeFromCart = async (lineId: string) => {
-    const newCart = await useRemoveFromCart(cart.value.id, lineId);
-    cart.value = newCart;
-    showNotification('Item has been removed from the cart.', 'negative');
-  };
-
   const isCartOpened = ref<boolean>(false);
 
   const closeCart = () => {
@@ -69,6 +52,38 @@ export const useStore = defineStore("store", () => {
     };
   };
 
+  const cart = ref<Cart>(null);
+  const isCartLoading = ref(false);
+
+  const addToCart = async (cartLine: BaseCartLine) => {
+    try {
+      isCartLoading.value = true;
+      if (!cart.value) {
+        cart.value = await useCreateCart();
+      }
+      const newCart = await useAddToCart(cart.value.id, cartLine);
+      cart.value = newCart;
+      showNotification("Item has been added to the cart.", "positive");
+    } catch (error) {
+      showNotification("Error while adding item to the cart.", "negative");
+    } finally {
+      isCartLoading.value = false;
+    }
+  };
+
+  const removeFromCart = async (lineId: string) => {
+    try {
+      isCartLoading.value = true;
+      const newCart = await useRemoveFromCart(cart.value.id, lineId);
+      cart.value = newCart;
+      showNotification("Item has been removed from the cart.", "warning");
+    } catch (error) {
+      showNotification("Error while removing item from the cart.", "negative");
+    } finally {
+      isCartLoading.value = false;
+    }
+  };
+
   return {
     isDrawerOpened,
     isDarkMode,
@@ -79,6 +94,7 @@ export const useStore = defineStore("store", () => {
     addToCart,
     removeFromCart,
     isCartOpened,
+    isCartLoading,
     closeCart,
     toggleCart,
     notification,

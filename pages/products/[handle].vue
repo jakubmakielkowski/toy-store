@@ -20,7 +20,10 @@
                     {{ tag }}
                 </SfChip>
             </section>
-            <SfButton class="w-full dark:bg-neutral-900" @click="addToCart">{{ $t("Add to cart") }}</SfButton>
+            <SfButton v-if="store.isCartLoading" disabled class="w-full">{{ $t("Add to cart") }}
+                <SfLoaderCircular />
+            </SfButton>
+            <SfButton v-else class="w-full dark:bg-neutral-900" @click="addToCart">{{ $t("Add to cart") }}</SfButton>
         </div>
     </div>
     <section>
@@ -33,11 +36,11 @@
 import {
     SfButton,
     SfChip,
-    SfIconChevronLeft,
+    SfLoaderCircular,
 } from '@storefront-ui/vue';
 import { useProduct, useProductRecommendations } from "~/composables/api";
 import { useStore } from "~/stores/store";
-import type { Product, Image } from "~/types/api";
+import type { Product } from "~/types/api";
 
 const route = useRoute();
 
