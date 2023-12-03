@@ -47,4 +47,9 @@ type RadioItem = {
   value: string;
 };
 
-export type { Variables, MoneyV2, Image, ConnectionArray, ResponseData, RadioItem };
+type Breadcrumb = {
+  path: string,
+  name: string
+}
+
+export type { Variables, MoneyV2, Image, ConnectionArray, ResponseData, RadioItem, Breadcrumb };

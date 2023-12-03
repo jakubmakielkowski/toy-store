@@ -1,9 +1,4 @@
 <template>
-    <NuxtLink to="/blog">
-        <SfButton class="mt-4 mb-6 dark:bg-neutral-900" tabindex="-1">
-            <SfIconChevronLeft />{{ $t("Blog") }}
-        </SfButton>
-    </NuxtLink>
     <AsyncDataWrapper :noData="!article" :error="articleError">
         <h1 class="text-2xl font-bold">{{ article?.title }}</h1>
         <div class="flex gap-1 my-4">

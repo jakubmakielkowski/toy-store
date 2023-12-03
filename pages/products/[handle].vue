@@ -1,9 +1,4 @@
 <template>
-    <NuxtLink to="/products">
-        <SfButton class="my-4 dark:bg-neutral-900" tabindex="-1">
-            <SfIconChevronLeft />{{ $t("Products") }}
-        </SfButton>
-    </NuxtLink>
     <h1 class="text-2xl font-bold mb-8">{{ product?.title }}</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
         <ProductGallery :images="product?.images.nodes" />
