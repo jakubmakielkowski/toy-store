@@ -23,8 +23,15 @@ type Product = {
     nodes: Array<Image>;
   };
   variants: {
-    nodes: { id: string };
+    nodes: Array<ProductVariant>;
   };
 };
 
-export type { Product };
+type ProductVariant = {
+  id: string;
+  price: MoneyV2;
+  product: Product;
+  image: Image;
+};
+
+export type { Product, ProductVariant };

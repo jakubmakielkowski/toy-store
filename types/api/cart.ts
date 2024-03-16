@@ -1,11 +1,9 @@
 import type { MoneyV2 } from "./base";
-import type { Product } from "./product";
+import type { ProductVariant } from "./product";
 
 type BaseCartLine = {
     id: string;
-    merchandise: {
-        productVariant: Partial<Product>;
-    } 
+    merchandise: Partial<ProductVariant>; 
     quantity: number; 
 }
 

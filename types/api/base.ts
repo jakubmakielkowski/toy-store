@@ -16,7 +16,8 @@ type MoneyV2 = {
 type Image = {
   altText?: string;
   id?: string;
-  url: string;
+  url?: string;
+  src?: string;
 };
 
 type PageInfo = {

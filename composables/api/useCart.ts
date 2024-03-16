@@ -111,11 +111,11 @@ const addToCartMutation = print(gql`
   }
 `);
 
-const useAddToCart = async (cartId: string, cartLine: BaseCartLine): Promise<Cart> => {
+const useAddToCart = async (cartId: string, cartLine: Partial<BaseCartLine>): Promise<Cart> => {
   const body = {
     variables: {
       cartId: cartId,
-      merchandiseId: cartLine.merchandise.productVariant.id,
+      merchandiseId: cartLine.merchandise.id,
       quantity: Number(cartLine.quantity),
     },
     query: addToCartMutation,

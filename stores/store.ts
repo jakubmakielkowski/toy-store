@@ -55,7 +55,7 @@ export const useStore = defineStore("store", () => {
   const cart = ref<Cart>(null);
   const isCartLoading = ref(false);
 
-  const addToCart = async (cartLine: BaseCartLine) => {
+  const addToCart = async (cartLine: Partial<BaseCartLine>) => {
     try {
       isCartLoading.value = true;
       if (!cart.value) {

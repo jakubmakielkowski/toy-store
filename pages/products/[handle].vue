@@ -68,9 +68,7 @@ const {
 
 const addToCart = (): void => {
     store.addToCart({
-        merchandise: {
-            productVariant: product.value.variants.nodes[0],
-        },
+        merchandise: product.value.variants.nodes[0],
         quantity: 1
     });
 }
