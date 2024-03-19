@@ -1,4 +1,19 @@
-# Nuxt 3 Minimal Starter
+# Toy-store app
+**Simple e-commerce store app** with custom headless frontend. Data gathered from a real Shopify store. The goal of the project was to learn the Shopify API and to get better at using Nuxt, GraphQL and Tailwind.
+
+Live: https://jm-toy-store.vercel.app/ hosted on Vercel (Paris, France, West - cdg1).
+
+**Project includes**: headless frontend, third party data, SSR, routing, i18n, dark mode, UI library
+
+**For the further development**: accessibility, testing
+
+## Technologies
+ - Backend (as a service): GraphQL Shopify API 
+ - Frontend: Nuxt 3, Vue 3, TypeScript, GraphQL, Pinia, Vue Router, i18n, Storefront UI component library (Vue with Tailwind), lodash
+ - Deployment: Vercel
+ - Third party services/libraries: Shopify, Storefront UI
+
+# Installation
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
@@ -9,15 +24,6 @@ Make sure to install the dependencies:
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -27,15 +33,6 @@ Start the development server on `http://localhost:3000`:
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -45,15 +42,6 @@ Build the application for production:
 ```bash
 # npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -61,15 +49,6 @@ Locally preview production build:
 ```bash
 # npm
 npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
