@@ -4,12 +4,12 @@
     <div class="grid gap-4 grid-cols-1">
       <NuxtLink :to="`/blog/${article.handle}`" v-for="article in articles"
         class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md">
-        <ArticleCard :article="article" />
+        <ArticleCard :article="article" :aria-label="`${$t('Blog post')} ${article.title}`" />
       </NuxtLink>
     </div>
   </AsyncDataWrapper>
 </template>
-  
+
 <script lang="ts" setup>
 import { useArticles } from "~/composables/api";
 import type { ArticlesResponse, ConnectionArray } from "~/types/api";
@@ -26,4 +26,3 @@ const {
 
 const articles = computed(() => articlesData.value?.nodes || []);
 </script>
-  

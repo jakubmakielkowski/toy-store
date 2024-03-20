@@ -6,19 +6,21 @@
             :next-disabled="activeIndex === images?.length - 1" buttons-placement="floating">
             <template #previousButton="defaultProps">
                 <SfButton v-if="!firstThumbVisible" v-bind="defaultProps" :disabled="activeIndex === 0"
-                    class="absolute !rounded-full z-10 top-4 rotate-90 bg-white" variant="secondary" size="sm" square>
+                    class="absolute !rounded-full z-10 top-4 rotate-90 bg-white" variant="secondary" size="sm" square
+                    :aria-label="`${$t('Products gallery scroll to start')}`">
                     <SfIconChevronLeft size="sm" />
                 </SfButton>
             </template>
             <button v-for="({ src, altText }, index) in images" :key="`${altText}-${index}-thumbnail`"
-                :ref="(el) => assignRef(el, index)" type="button" :aria-label="altText"
+                :ref="(el) => assignRef(el, index)" type="button" :aria-label="altText || `${$t('Product image')} ${(index+1)}`"
                 :aria-current="activeIndex === index" :class="`md:w-[78px] md:h-auto relative shrink-0 pb-1 mx-4 -mb-2 border-b-4 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${activeIndex === index ? 'border-primary-700' : 'border-transparent'
-                    }`" @mouseover="activeIndex = index" @focus="activeIndex = index">
+                }`" @mouseover="activeIndex = index" @focus="activeIndex = index">
                 <img :alt="altText" class="border border-neutral-200" width="78" height="78" :src="src" />
             </button>
             <template #nextButton="defaultProps">
                 <SfButton v-if="!lastThumbVisible" v-bind="defaultProps" :disabled="activeIndex === images?.length"
-                    class="absolute !rounded-full z-10 bottom-4 rotate-90 bg-white" variant="secondary" size="sm" square>
+                    class="absolute !rounded-full z-10 bottom-4 rotate-90 bg-white" variant="secondary" size="sm" square
+                    :aria-label="`${$t('Products gallery scroll to end')}`">
                     <SfIconChevronRight size="sm" />
                 </SfButton>
             </template>
@@ -35,7 +37,7 @@
         </SfScrollable>
     </div>
 </template>
-  
+
 <script lang="ts" setup>
 import { ref } from 'vue';
 import {
@@ -117,4 +119,3 @@ const assignRef = (el: Element | ComponentPublicInstance | null, index: number) 
     }
 };
 </script>
-  

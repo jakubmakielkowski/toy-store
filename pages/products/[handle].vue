@@ -16,7 +16,7 @@
             </section>
             <section class="mb-4">
                 <h2 class="mb-2 font-bold ">{{ $t("Tags") }}</h2>
-                <SfChip v-if="product?.tags" v-for="tag in product?.tags" size="sm" class="mr-2 mb-2 ">
+                <SfChip v-if="product?.tags" v-for="tag in product?.tags" size="sm" class="mr-2 mb-2">
                     {{ tag }}
                 </SfChip>
             </section>

@@ -1,4 +1,3 @@
-
 <template>
     <div class="h-full py-2 px-4 rounded-md border bg-white border-slate-300">
         <div class="mb-2 flex justify-between items-center gap-1">
@@ -7,7 +6,9 @@
                     props.item?.merchandise?.price?.currencyCode }}</span>
             </p>
 
-            <SfButton :disabled="store.isCartLoading" variant="tertiary" size="sm" :square="true" @click="removeFromCart">
+            <SfButton :disabled="store.isCartLoading" variant="tertiary" size="sm" :square="true"
+                :aria-label="`${props.item.merchandise.product.title} ${$t('Remove from the cart')}`"
+                @click="removeFromCart">
                 <SfLoaderCircular v-if="store.isCartLoading" />
                 <SfIconClose v-else />
             </SfButton>
@@ -22,7 +23,7 @@
         </div>
     </div>
 </template>
-      
+
 <script lang="ts" setup>
 import { SfButton, SfIconClose, SfLoaderCircular } from '@storefront-ui/vue';
 import type { BaseCartLine } from '~/types/api';
@@ -38,4 +39,3 @@ const removeFromCart = (): void => {
     store.removeFromCart(props.item.id);
 }
 </script>
-      

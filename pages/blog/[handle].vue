@@ -2,7 +2,7 @@
     <AsyncDataWrapper :noData="!article" :error="articleError">
         <h1 class="text-2xl font-bold">{{ article?.title }}</h1>
         <div class="flex gap-1 my-4">
-            <SfChip v-if="article?.tags" v-for="tag in article?.tags" size="sm" class="mr-2 mb-2 ">
+            <SfChip v-if="article?.tags" v-for="tag in article?.tags" size="sm" class="mr-2 mb-2" tabindex="-1">
                 {{ tag }}
             </SfChip>
         </div>
