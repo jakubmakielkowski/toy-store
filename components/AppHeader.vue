@@ -7,7 +7,7 @@
           <SfIconMenu />
         </SfButton>
         <NuxtLink to="/products" :aria-label="`${$t('Products')}`">
-          <SfButton :square="true" class="dark:bg-neutral-900" tabindex="-1">
+          <SfButton :square="true" class="dark:bg-neutral-900" tabindex="-1" :aria-label="`${$t('Products')}`">
             <SfIconSearch />
           </SfButton>
         </NuxtLink>

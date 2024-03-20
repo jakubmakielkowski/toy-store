@@ -4,7 +4,7 @@
     <div class="mb-4 flex flex-col items-center">
       <img
         :src="props.product.featuredImage?.url"
-        :alt="props.product.featuredImage?.altText"
+        :alt="props.product.featuredImage?.altText || props.product.handle"
         class="h-24 sm:h-32 md:h-48 object-cover borde rounded-md"
       />
     </div>

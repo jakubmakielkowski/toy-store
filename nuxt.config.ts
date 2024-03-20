@@ -11,4 +11,12 @@ export default defineNuxtConfig({
     vueI18n: "./i18n.config.ts",
   },
   devtools: { enabled: true },
+  app: {
+    head: {
+      title: "Toy store",
+      htmlAttrs: {
+        lang: "pl",
+      }
+    }
+  }
 });

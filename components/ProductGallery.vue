@@ -15,7 +15,7 @@
                 :ref="(el) => assignRef(el, index)" type="button" :aria-label="altText || `${$t('Product image')} ${(index+1)}`"
                 :aria-current="activeIndex === index" :class="`md:w-[78px] md:h-auto relative shrink-0 pb-1 mx-4 -mb-2 border-b-4 snap-start cursor-pointer focus-visible:outline focus-visible:outline-offset transition-colors flex-grow md:flex-grow-0  ${activeIndex === index ? 'border-primary-700' : 'border-transparent'
                 }`" @mouseover="activeIndex = index" @focus="activeIndex = index">
-                <img :alt="altText" class="border border-neutral-200" width="78" height="78" :src="src" />
+                <img :alt="altText || `${$t('Product image')} ${(index+1)}`" class="border border-neutral-200" width="78" height="78" :src="src" />
             </button>
             <template #nextButton="defaultProps">
                 <SfButton v-if="!lastThumbVisible" v-bind="defaultProps" :disabled="activeIndex === images?.length"
@@ -31,8 +31,8 @@
             buttons-placement="none" :drag="{ containerWidth: true }" @on-drag-end="onDragged">
             <div v-for="({ src, altText }, index) in images" :key="`${altText}-${index}`"
                 class="flex justify-center h-full basis-full shrink-0 grow snap-center">
-                <img :aria-label="altText" :aria-hidden="activeIndex !== index" class="object-cover w-auto h-full"
-                    :alt="altText" :src="src" />
+                <img :aria-label="altText || `${$t('Product image')} ${(index+1)}`" :aria-hidden="activeIndex !== index" class="object-cover w-auto h-full"
+                    :alt="altText || `${$t('Product image')} ${(index+1)}`" :src="src" />
             </div>
         </SfScrollable>
     </div>

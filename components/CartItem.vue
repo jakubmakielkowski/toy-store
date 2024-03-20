@@ -18,7 +18,7 @@
                 {{ props.item.merchandise.product.title }}
             </p>
             <div class="w-[60px]">
-                <img :src="props.item?.merchandise?.image?.url" />
+                <img :src="props.item?.merchandise?.image?.url" :alt="props.item.merchandise.product.title" />
             </div>
         </div>
     </div>

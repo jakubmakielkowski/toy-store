@@ -33,7 +33,7 @@
         </ul>
       </div>
       <div class="sm:ml-auto">
-        <p class="mb-1 text-slate-400">© 2023 Shopify</p>
+        <p class="mb-1 text-slate-600">© 2023 Shopify</p>
       </div>
     </div>
   </footer>

@@ -1,6 +1,6 @@
 
 <template>
-    <div class="mb-6 flex flex-col sm:flex-row text-slate-400">
+    <div class="mb-6 flex flex-col sm:flex-row text-slate-600">
         <div v-for="(breadcrumb, index) in breadcrumbs">
             <NuxtLink v-if="path !== '/'" :to="breadcrumb.path" class="hover:underline">
                 {{ $t(breadcrumb.name) }}
