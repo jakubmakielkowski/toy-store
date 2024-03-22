@@ -8,7 +8,7 @@
 
             <SfButton :disabled="store.isCartLoading" variant="tertiary" size="sm" :square="true"
                 :aria-label="`${props.item.merchandise.product.title} ${$t('Remove from the cart')}`"
-                @click="removeFromCart">
+                data-testid="cart-remove-item-button" @click="removeFromCart">
                 <SfLoaderCircular v-if="store.isCartLoading" />
                 <SfIconClose v-else />
             </SfButton>

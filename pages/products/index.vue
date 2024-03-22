@@ -5,7 +5,7 @@
     <div class="grid gap-4 grid-cols-2 md:grid-cols-3">
       <NuxtLink :to="`/products/${product.handle}`" v-for="product in products"
         class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md"
-        :aria-label="`${$t('Product')} ${product.handle}`">
+        :aria-label="`${$t('Product')} ${product.handle}`" data-testid="product-card-link">
         <ProductCard :product="product" />
       </NuxtLink>
     </div>

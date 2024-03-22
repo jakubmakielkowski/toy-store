@@ -6,17 +6,17 @@
         <p class="text-xl font-bold mb-2">{{ $t('Links') }}</p>
         <ul>
           <li>
-            <NuxtLink class="block underline mb-1" to="/refunds">
+            <NuxtLink class="block underline mb-1" to="/refunds" data-testid="refunds-link">
               {{ $t('Refunds policy') }}
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink class="block underline mb-1" to="/shipping">
+            <NuxtLink class="block underline mb-1" to="/shipping" data-testid="shipping-link">
               {{ $t('Shipping policy') }}
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink class="block underline mb-1" to="/404">
+            <NuxtLink class="block underline mb-1" to="/404" data-testid="404-link">
               {{ $t('404 page') }}
             </NuxtLink>
           </li>

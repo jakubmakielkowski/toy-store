@@ -3,7 +3,7 @@
   <section class="mb-8">
     <h2 class="mb-4 text-xl font-bold">{{ $t("Sample blog post") }}</h2>
     <AsyncDataWrapper :noData="!article" :error="articlesError">
-      <NuxtLink :to="`/blog/${article?.handle}`" :aria-label="`${$t('Blog post')} ${article.title}`">
+      <NuxtLink :to="`/blog/${article?.handle}`" :aria-label="`${$t('Blog post')} ${article.title}`" data-testid="blog-card-link">
         <ArticleCard :article="article" />
       </NuxtLink>
     </AsyncDataWrapper>

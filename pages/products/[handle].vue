@@ -5,7 +5,7 @@
         <div>
             <p class="mb-1 text-sm text-slate-500">{{ $t("Created at") }}: {{ product?.createdAt }}</p>
             <div class="mb-4 text-xl font-bold">{{ product?.priceRange.minVariantPrice.amount }} {{
-                product?.priceRange.minVariantPrice.currencyCode }}</div>
+        product?.priceRange.minVariantPrice.currencyCode }}</div>
             <section class="mb-4">
                 <h2 class="mb-1 font-bold ">{{ $t("Description") }}</h2>
                 <p class="">{{ product?.description }}</p>
@@ -23,7 +23,8 @@
             <SfButton v-if="store.isCartLoading" disabled class="w-full">{{ $t("Add to cart") }}
                 <SfLoaderCircular />
             </SfButton>
-            <SfButton v-else class="w-full dark:bg-neutral-900" @click="addToCart">{{ $t("Add to cart") }}</SfButton>
+            <SfButton v-else class="w-full dark:bg-neutral-900" @click="addToCart"
+                data-testid="product-add-to-cart-button">{{ $t("Add to cart") }}</SfButton>
         </div>
     </div>
     <section>
@@ -31,7 +32,7 @@
         <ProductsSlider :products="productRecommendations" />
     </section>
 </template>
-    
+
 <script lang="ts" setup>
 import {
     SfButton,
@@ -57,7 +58,7 @@ const {
 );
 
 useHead({
-  title: `Toy Store - ${product.value.title}`
+    title: `Toy Store - ${product.value.title}`
 });
 
 const id = computed(() => product.value.id);
@@ -78,4 +79,3 @@ const addToCart = (): void => {
 
 
 </script>
-    

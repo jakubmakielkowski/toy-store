@@ -9,7 +9,7 @@
             </SfButton>
         </template>
         <NuxtLink :to="`/products/${product.handle}`" v-for="product in products"
-            class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md" :aria-label="`${$t('Product')} ${product.handle}`">
+            class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md" :aria-label="`${$t('Product')} ${product.handle}`" data-testid="slider-product-link">
             <ProductCard :product="product" class="w-[250px]" />
         </NuxtLink>
         <template #nextButton="defaultProps">

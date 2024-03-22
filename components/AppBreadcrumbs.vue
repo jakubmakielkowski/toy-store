@@ -1,15 +1,14 @@
-
 <template>
     <div class="mb-6 flex flex-col sm:flex-row text-slate-600">
         <div v-for="(breadcrumb, index) in breadcrumbs">
-            <NuxtLink v-if="path !== '/'" :to="breadcrumb.path" class="hover:underline">
+            <NuxtLink v-if="path !== '/'" :to="breadcrumb.path" class="hover:underline" data-testid="breadcrumb-link">
                 {{ $t(breadcrumb.name) }}
             </NuxtLink>
             <span v-if="index < breadcrumbs.length - 1" class="mx-2">/</span>
         </div>
     </div>
 </template>
-  
+
 <script lang="ts" setup>
 import { capitalize } from "lodash-es";
 import type { Breadcrumb } from '~/types/api';

@@ -3,7 +3,7 @@
   <AsyncDataWrapper :error="articlesError" :noData="!articles.length">
     <div class="grid gap-4 grid-cols-1">
       <NuxtLink :to="`/blog/${article.handle}`" v-for="article in articles"
-        class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md">
+        class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md" data-testid="blog-card-link">
         <ArticleCard :article="article" :aria-label="`${$t('Blog post')} ${article.title}`" />
       </NuxtLink>
     </div>

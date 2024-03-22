@@ -8,7 +8,7 @@
                 </div>
             </div>
             <CartItem v-for="item in cart?.lines?.nodes" :item="item" class="mb-4" />
-            <NuxtLink to="/cart">
+            <NuxtLink to="/cart" data-testid="cart-link">
                 <SfButton class="w-full dark:bg-neutral-900" tabindex="-1">{{ $t("See the cart") }}</SfButton>
             </NuxtLink>
         </div>
