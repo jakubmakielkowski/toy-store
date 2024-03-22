@@ -56,6 +56,9 @@ const {
     useProduct(handle)
 );
 
+useHead({
+  title: `Toy Store - ${product.value.title}`
+});
 
 const id = computed(() => product.value.id);
 

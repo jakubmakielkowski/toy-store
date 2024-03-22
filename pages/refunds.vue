@@ -10,7 +10,11 @@
 import { useShop } from "~/composables/api/useShop";
 import type { Shop } from "~/types/api"
 
-const { locale } = useI18n();
+const { t } = useI18n();
+
+useHead({
+  title: `Toy Store - ${t('Refunds')}`
+});
 
 const {
     data: shopData,

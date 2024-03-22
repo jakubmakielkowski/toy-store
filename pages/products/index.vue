@@ -4,13 +4,14 @@
   <AsyncDataWrapper :pending="productsPending" :error="productsError" :noData="!products.length">
     <div class="grid gap-4 grid-cols-2 md:grid-cols-3">
       <NuxtLink :to="`/products/${product.handle}`" v-for="product in products"
-        class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md" :aria-label="`${$t('Product')} ${product.handle}`">
+        class="rounded-md hover:shadow-md focus:shadow-md active:shadow-md"
+        :aria-label="`${$t('Product')} ${product.handle}`">
         <ProductCard :product="product" />
       </NuxtLink>
     </div>
   </AsyncDataWrapper>
 </template>
-  
+
 <script lang="ts" setup>
 import { pickBy } from "lodash-es";
 import type { RouteLocationRaw } from "vue-router";
@@ -20,6 +21,11 @@ import type { ProductsQuery, ProductsResponse } from "~/types/api";
 const { locale } = useI18n();
 const route = useRoute();
 const router = useRouter();
+const { t } = useI18n();
+
+useHead({
+  title: `Toy Store - ${t('Products')}`
+});
 
 const urlSearchQuery = ref<ProductsQuery>({
   title: "",
@@ -64,4 +70,3 @@ const updateProductsQuery = (newProductsQuery: ProductsQuery) => {
   refreshProducts();
 }
 </script>
-  

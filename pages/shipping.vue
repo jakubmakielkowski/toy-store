@@ -5,12 +5,16 @@
         <p v-html="shippingPolicy" />
     </AsyncDataWrapper>
 </template>
-  
+
 <script lang="ts" setup>
 import { useShop } from "~/composables/api/useShop";
-import type { Shop } from "~/types/api"
+import type { Shop } from "~/types/api";
 
-const { locale } = useI18n();
+const { t } = useI18n();
+
+useHead({
+    title: `Toy Store - ${t('Shipping')}`
+});
 
 const {
     data: shopData,
@@ -19,4 +23,3 @@ const {
 
 const shippingPolicy = computed(() => shopData.value.shippingPolicy?.body);
 </script>
-  

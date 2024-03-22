@@ -11,7 +11,7 @@
         </div>
     </AsyncDataWrapper>
 </template>
-    
+
 <script lang="ts" setup>
 import { useArticle } from "~/composables/api";
 import type { Article } from "~/types/api";
@@ -32,5 +32,8 @@ const {
     useArticle(handle)
 );
 
+
+useHead({
+    title: `Toy Store - ${article.value.title}`
+});
 </script>
-    

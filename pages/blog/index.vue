@@ -15,6 +15,11 @@ import { useArticles } from "~/composables/api";
 import type { ArticlesResponse, ConnectionArray } from "~/types/api";
 
 const { locale } = useI18n();
+const { t } = useI18n();
+
+useHead({
+  title: `Toy Store - ${t('Blog')}`
+});
 
 const {
   data: articlesData,

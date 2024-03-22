@@ -23,6 +23,11 @@ import { SfButton } from "@storefront-ui/vue";
 import { useStore } from '@/stores/store';
 
 const store = useStore();
+const { t } = useI18n();
+
+useHead({
+  title: `Toy Store - ${t('Cart')}`
+});
 
 const cart = computed(() => store.cart);
 
